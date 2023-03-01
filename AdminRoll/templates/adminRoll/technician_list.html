@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load technician_cases %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Technician List</h3>
+                            </div>
+                            <div class="main-title">
+                                <a href="{% url 'AdminRoll:create_user' 'technician' %}" class="add-user-btn">Add Technician</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table lms_table_active ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Contact</th>
+                                            <th scope="col">Case given</th>
+                                            <th scope="col">Fee per aligner</th>
+                                            <th scope="col">Outstanding</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for obj in technician_obj_list %}
+                                        <tr>
+                                            <td>{{ obj.user.username }}</td>
+                                            <td>{{ obj.number }}</td>
+                                            <td>{{ obj.id|technician_cases }}</td>
+                                            <td>{{ obj.fee }}</td>
+                                            <td>{{ obj.outstanding }}</td>
+                                            <td><a href="{% url 'AdminRoll:edit_technician' obj.id %}">Edit</a></td>
+                                            <td><a href="{% url 'AdminRoll:delete_user' obj.id 'technician' %}">Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

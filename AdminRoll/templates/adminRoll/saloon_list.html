@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Saloon List</h3>
+                            </div>
+                            <div class="main-title">
+                                <a href="{% url 'AdminRoll:create_saloon' %}" class="add-user-btn">Add Saloon</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table lms_table_active ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Building Number</th>
+                                            <th scope="col">Street</th>
+                                            <th scope="col">Town</th>
+                                            <th scope="col">Postcode</th>
+                                            <th scope="col">Country</th>
+                                            <th scope="col">Number</th>
+                                            <th scope="col">Email</th>
+                                            <!-- <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for obj in saloon_list_obj %}
+                                        <tr>
+                                            <td>{{ obj.name }}</td>
+                                            <td>{{ obj.building_number }}</td>
+                                            <td>{{ obj.street }}</td>
+                                            <td>{{ obj.town }}</td>
+                                            <td>{{ obj.postcode }}</td>
+                                            <td>{{ obj.country }}</td>
+                                            <td>{{ obj.number }}</td>
+                                            <td>{{ obj.email }}</td>
+                                            <!-- <td><a href="{% url 'AdminRoll:edit_dentist' obj.id %}">Edit</a></td>
+                                            <td><a href="#">Delete</a></td> -->
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

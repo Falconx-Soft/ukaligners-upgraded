@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Create Case</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="card-body">
+                            <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+                                <div class="row">
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Name*</label>
+                                                <input type="text" class="form-control m-2 form-fields"
+                                                    placeholder="Name" name="name" value="{{case_obj.name}}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Suname</label>
+                                                <input type="text" class="form-control m-2" placeholder="Surname"
+                                                    name="surname" value="{{case_obj.surname}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Gender</label>
+                                                {{form.gender}}
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Age</label>
+                                                <input type="number" class="form-control m-2" placeholder="Age"
+                                                    name="age" value="{{case_obj.age}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label style="margin-bottom: 10px;">Saloon Owner</label><br>
+                                                <input type="text" value="{{saloon_owner_obj.user.username}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Saloon*</label>
+                                                <select name="saloon_id" required>
+                                                    <option value="">-------</option>
+                                                    {% for saloon in saloon_owner_obj.saloon.all %}
+                                                        {% if saloon.id == case_obj.saloon.id %}
+                                                            <option value="{{saloon.id}}" selected>{{saloon.name}}</option>
+                                                        {% else %}
+                                                            <option value="{{saloon.id}}">{{saloon.name}}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Orthodontic treatment in past</label>
+                                                {{form.orthodontic_treatment_past}}
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Treatment*</label>
+                                                {{form.treatment_required}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Section*</label>
+                                                {{form.section}}
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Upper Jaw File</label><br>
+                                                {{form.upper_jaw}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Collection</label>
+                                                {% if case_obj.rquest_collection == True %}
+                                                <input type="checkbox" name="rquest_collection" checked>
+                                                {% else %}
+                                                <input type="checkbox" name="rquest_collection">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Lower Jaw File</label><br>
+                                                {{form.lower_jaw}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-12">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label class="form-label" for="inputState">Additional Photos</label>
+                                                <input type="file" class="form-control" name="additional_photos"
+                                                    multiple />
+                                                <div class="images-grid">
+                                                    {% for image in additional_images_obj %}
+                                                    <div class="image-holder">
+                                                        <img src="{{image.image.url}}" class="image">
+                                                        <a href="{% url 'DentistRoll:delete_additional_image' image.id %}"
+                                                            class="image-delete-tag">X</a>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-12">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Additional Information</label><br>
+                                                <textarea class="additional-info-textarea" rows="5"
+                                                    name="additional_information">{{case_obj.additional_information}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Create
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

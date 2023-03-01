@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Case Details</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>{{case_obj.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Surname</td>
+                                            <td>{{case_obj.surname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td>{{case_obj.gender}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Age</td>
+                                            <td>{{case_obj.age}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment required</td>
+                                            <td>{{case_obj.treatment_required}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Orthodontic treatment past</td>
+                                            <td>{{case_obj.orthodontic_treatment_past}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Section</td>
+                                            <td>{{case_obj.section}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment type</td>
+                                            <td>{{case_obj.treatment_type}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upper jaw</td>
+                                            <td>
+                                                {% if case_obj.upper_jaw %}
+                                                <a href="{{case_obj.upper_jaw.url}}" target="_blank" download>Download</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lower jaw</td>
+                                            <td>
+                                                {% if case_obj.lower_jaw %}
+                                                <a href="{{case_obj.lower_jaw.url}}" target="_blank" download>Download</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Additional information</td>
+                                            <td>{{case_obj.rquest_collection}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rquest collection</td>
+                                            <td>{{case_obj.rquest_collection}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>{{case_obj.status}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Created at</td>
+                                            <td>{{case_obj.created_at}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Additional Images</td>
+                                            <td>
+                                                <div class="images-grid">
+                                                    {% for image in additional_images_obj %}
+                                                    <div class="image-holder">
+                                                        <a href="{{ image.image.url }}" target="_blank" download>
+                                                            <img src="{{image.image.url}}" class="image">
+                                                        </a>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Fields</th>
+                                        </tr>
+                                    </thead>
+                                    <form id="" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <tbody>
+                                            <tr>
+                                                <td>Ortho Id:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.ortho_id}}" {% endif %} name="ortho_id" placeholder="Enter Ortho id" class="form-control" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aligners Upper:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.aligners_upper}}" {% endif %} name="aligner_upper" placeholder="Enter Alligners Upper" class="form-control" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aligners Lower:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.aligners_lower}}" {% endif %} name="aligner_lower" placeholder="Enter Aligners Lower" class="form-control" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Retainer Upper:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.retainer_upper}}" {% endif %} name="retainer_upper" placeholder="Enter Retainer Upper" class="form-control county_autocomplete" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Retainer Lower:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.retainer_lower}}" {% endif %} name="retainer_lower" placeholder="Enter Retainer Lower" class="form-control court_name_autocomplete" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Treatment Plan upper:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.treatment_plan_upper}}" {% endif %} name="treatment_plan_upper" placeholder="Treatment Plan upper" class="form-control address1_autocomplete" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Treatment Plan lower:</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.treatment_plan_lower}}" {% endif %} name="treatment_plan_lower" placeholder="Treatment Plan lower" class="form-control phone_autocomplete" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Duration (Months):</td>
+                                                <td>
+                                                    <input type="text" {% if case_obj.duration %} value="{{case_obj.duration}}" {% endif %} name="duration" placeholder="Enter Duration" class="form-control address2_autocomplete" required>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Videos:</td>
+                                                <td>
+                                                    <input type="file" multiple name="videos" class="form-control">
+                                                    <div class="download-video-div">
+                                                        {% for video in additional_videos_obj %}
+                                                        <a href="{{ video.video.url }}" target="_blank" download>
+                                                            Download
+                                                        </a>
+                                                        {% endfor %}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Update
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </form>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

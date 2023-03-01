@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Create Case</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="card-body">
+                            <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+                                <div class="row">
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Name*</label>
+                                                <input type="text" class="form-control m-2 form-fields" placeholder="Name"
+                                                    name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Suname</label>
+                                                <input type="text" class="form-control m-2" placeholder="Surname"
+                                                    name="surname">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Gender</label>
+                                                <select name="gender">
+                                                    <option value="male">male</option>
+                                                    <option value="female">female</option>
+                                                    <option value="other">other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Age</label>
+                                                <input type="number" class="form-control m-2" placeholder="Age"
+                                                    name="age">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Dentist*</label>
+                                                <select name="dentist_id" required>
+                                                    <option value="">-------</option>
+                                                    {% for dentist in dentist_list %}
+                                                        <option value="{{dentist.id}}">{{dentist.user.username}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Clinic*</label>
+                                                <select name="clinic_id" required>
+                                                    <option value="">-------</option>
+                                                    {% for clinic in clinic_list %}
+                                                        <option value="{{clinic.id}}">{{clinic.name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Orthodontic treatment in past</label>
+                                                <select name="orthodontic_treatment_past">
+                                                    <option value="yes">yes</option>
+                                                    <option value="no">no</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Treatment*</label>
+                                                <select name="treatment_required" required>
+                                                    <option value="">-------</option>
+                                                    <option value="full treatment">full treatment</option>
+                                                    <option value="continuation">continuation</option>
+                                                    <option value="refinement">refinement</option>
+                                                    <option value="retainer">retainer</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Section*</label>
+                                                <select name="section" required>
+                                                    <option value="">-------</option>
+                                                    <option value="both arches">both arches</option>
+                                                    <option value="upper only">upper only</option>
+                                                    <option value="lower only">lower only</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Upper Jaw File</label><br>
+                                                <input type="file" class="form-control" name="upper_jaw">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Collection</label>
+                                                <input type="checkbox" name="rquest_collection">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Lower Jaw File</label>
+                                                <input type="file" class="form-control" name="lower_jaw">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-12">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label class="form-label" for="inputState">Additional Photos</label>
+                                                <input type="file" class="form-control" name="additional_photos" multiple/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-12">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Additional Information</label><br>
+                                                <textarea class="additional-info-textarea" rows="5" name="additional_information"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Create
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

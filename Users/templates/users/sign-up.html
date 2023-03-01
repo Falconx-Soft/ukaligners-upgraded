@@ -1,0 +1,41 @@
+{% extends 'full_base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_box mb_30">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+
+                            <div class="modal-content cs_modal">
+                                <div class="modal-header justify-content-center theme_bg_1">
+                                    <h5 class="modal-title text_white">Sign-Up</h5>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                    <h4 style="text-align: center;">To get register, Please contact us at <br>ukaligners@gmail.com</h4>
+                                    
+                                    <p>Have an account? <a data-bs-toggle="modal" data-bs-target="#sing_up"
+                                            data-bs-dismiss="modal" href="{% url 'login' %}">Login</a></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

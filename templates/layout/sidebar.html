@@ -1,0 +1,156 @@
+{% load static %}
+<nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y" style="background: rgb(27, 48, 34)">
+    <div class="logo d-flex justify-content-between" style="background: transparent">
+        <a href="#"><img src="{% static 'img/logo2.png' %}" alt=""></a>
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
+        </div>
+    </div>
+    <ul id="sidebar_menu" style="background: rgb(255,255)">
+        {% if user.is_admin %}
+        <li class="">
+            <a href="{% url 'AdminRoll:admin_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        
+        <li class="">
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/2.svg' %}" alt="">
+                </div>
+                <span>Co-Users</span>
+            </a>
+            <ul>
+                <li><a href="{% url 'AdminRoll:dentist_list' %}">Dentist</a></li>
+                <li><a href="{% url 'AdminRoll:saloon_owner_list' %}">Saloon</a></li>
+                <li><a href="{% url 'AdminRoll:manager_list' %}">Manager</a></li>
+                <li><a href="{% url 'AdminRoll:planner_list' %}">Planner</a></li>
+                <li><a href="{% url 'AdminRoll:technician_list' %}">Technician</a></li>
+            </ul>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:add_case_admin' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Add Case</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:case_fee' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Case Fee</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:fee_list' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Account</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:clinic_list' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Clinics</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:saloon_list' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Saloon</span>
+            </a>
+        </li>
+
+        {% elif user.is_dentist %}
+        <li class="">
+            <a href="{% url 'DentistRoll:dentist_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'DentistRoll:add_case' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Add Case</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:create_clinic' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Add Clinics</span>
+            </a>
+        </li>
+        {% elif user.is_salon %}
+        <li class="">
+            <a href="{% url 'SaloonRoll:saloon_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'SaloonRoll:add_case' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Add Case</span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{% url 'AdminRoll:create_saloon' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Add Saloon</span>
+            </a>
+        </li>
+        {% elif user.is_planner %}
+        <li class="">
+            <a href="{% url 'PlannerRoll:planner_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        {% elif user.is_technician %}
+        <li class="">
+            <a href="{% url 'TechnicianRoll:technician_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        
+        {% elif user.is_manager %}
+        <li class="">
+            <a href="{% url 'ManagerRoll:manager_dashboard' %}" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

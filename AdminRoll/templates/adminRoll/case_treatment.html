@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Case Details</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>{{case_obj.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Surname</td>
+                                            <td>{{case_obj.surname}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td>{{case_obj.gender}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Age</td>
+                                            <td>{{case_obj.age}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment required</td>
+                                            <td>{{case_obj.treatment_required}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Orthodontic treatment past</td>
+                                            <td>{{case_obj.orthodontic_treatment_past}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Section</td>
+                                            <td>{{case_obj.section}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment type</td>
+                                            <td>{{case_obj.treatment_type}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Upper jaw</td>
+                                            <td>
+                                                {% if case_obj.upper_jaw %}
+                                                <a href="{{case_obj.upper_jaw.url}}" target="_blank" download>Download</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lower jaw</td>
+                                            <td>
+                                                {% if case_obj.lower_jaw %}
+                                                <a href="{{case_obj.lower_jaw.url}}" target="_blank" download>Download</a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Additional information</td>
+                                            <td>{{case_obj.rquest_collection}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rquest collection</td>
+                                            <td>{{case_obj.rquest_collection}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Manager</td>
+                                            {% if case_obj.dentist %}
+                                                <td>{{case_obj.dentist.manager}}</td>
+                                            {% else %}
+                                                <td>{{case_obj.saloon_owner.manager}}</td>
+                                            {% endif %}
+                                        </tr>
+                                        <tr>
+                                            <td>Planner</td>
+                                            <td>{{case_obj.planner}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Technician</td>
+                                            <td>{{case_obj.technician}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>{{case_obj.status}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Created at</td>
+                                            <td>{{case_obj.created_at}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Additional Images</td>
+                                            <td>
+                                                <div class="images-grid">
+                                                    {% for image in additional_images_obj %}
+                                                    <div class="image-holder">
+                                                        <a href="{{ image.image.url }}" target="_blank" download>
+                                                            <img src="{{image.image.url}}" class="image">
+                                                        </a>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ortho id</td>
+                                            <td>{{case_obj.ortho_id}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aligners upper</td>
+                                            <td>{{case_obj.aligners_upper}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aligners lower</td>
+                                            <td>{{case_obj.aligners_lower}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Retainer upper</td>
+                                            <td>{{case_obj.retainer_upper}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Retainer lower</td>
+                                            <td>{{case_obj.retainer_lower}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment plan upper</td>
+                                            <td>{{case_obj.treatment_plan_upper}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treatment plan lower</td>
+                                            <td>{{case_obj.treatment_plan_lower}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration (Months)</td>
+                                            <td>{{case_obj.duration}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Additional Videos</td>
+                                            <td>
+                                                <div class="download-video-div">
+                                                    {% for video in additional_videos_obj %}
+                                                    <a href="{{ video.video.url }}" target="_blank" download>
+                                                        Download
+                                                    </a>
+                                                    {% endfor %}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>{{case_obj.status}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Technician</td>
+                                            <td>{{case_obj.technician}}</td>
+                                        </tr>
+                                        {% if case_obj.status != "tc" %}
+                                        <tr>
+                                            <td></td>
+                                            <td><a href="{% url 'AdminRoll:complete_case' case_obj.id %}">Complete</a></td>
+                                        </tr>
+                                        {% endif %}
+                                        <tr>
+                                            <td></td>
+                                            <td><a href="{% url 'AdminRoll:make_refinment' case_obj.id %}">Make Refinement</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

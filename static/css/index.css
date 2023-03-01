@@ -1,0 +1,99 @@
+.error-message{
+    color: red !important;
+}
+
+.form-fields-holder{
+    margin-bottom: 20px;
+}
+
+.form-fields{
+    margin-bottom: 0px !important;
+}
+
+.field-errors{
+    margin: 0px !important;
+    margin-bottom: 10px !important;
+    text-align: left !important;
+    color: red !important;
+}
+
+.errorlist>li{
+    color: red !important;
+}
+
+.add-user-btn{
+    background-color: rgb(27, 48, 34);
+    color: white;
+    padding: 5px;
+}
+
+.add-user-btn:hover{
+    color: white;
+}
+
+#inputContainer>select{
+    margin: 0.5rem!important;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.additional-info-textarea{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.images-grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.image-holder{
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.image{
+    width: 110px;
+    height: 110px;
+}
+
+.image-delete-tag{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.download-video-div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
