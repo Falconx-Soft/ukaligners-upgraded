@@ -51,7 +51,7 @@
                                                 {% if obj.clinic %} 
                                                     <select>
                                                         {% for clinic in obj.clinic.all %}
-                                                            <option>{{clinic.name}}</option>
+                                                            <option>{{clinic.user.username}}</option>
                                                         {% endfor %}
                                                     </select>
                                                 {% else %}

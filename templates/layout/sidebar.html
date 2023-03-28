@@ -90,14 +90,6 @@
                 <span>Add Case</span>
             </a>
         </li>
-        <li class="">
-            <a href="{% url 'AdminRoll:create_clinic' %}" aria-expanded="false">
-                <div class="icon_menu">
-                    <img src="{% static 'img/menu-icon/6.svg' %}" alt="">
-                </div>
-                <span>Add Clinics</span>
-            </a>
-        </li>
         {% elif user.is_salon %}
         <li class="">
             <a href="{% url 'SaloonRoll:saloon_dashboard' %}" aria-expanded="false">

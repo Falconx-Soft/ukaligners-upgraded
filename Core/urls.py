@@ -28,6 +28,7 @@ urlpatterns = [
     path('planner/', include('PlannerRoll.urls')),
     path('technician/', include('TechnicianRoll.urls')),
     path('manager/', include('ManagerRoll.urls')),
+    path('clinic/', include('ClinicRoll.urls')),
 
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),

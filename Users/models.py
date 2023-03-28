@@ -32,7 +32,7 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
-    username 				= models.CharField(max_length=30)
+    username 				= models.CharField(max_length=130)
     date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
     is_active				= models.BooleanField(default=True)
@@ -45,6 +45,7 @@ class Account(AbstractBaseUser):
     is_dentist      		= models.BooleanField(default=False)
     is_salon           		= models.BooleanField(default=False)
     is_individual     		= models.BooleanField(default=False)
+    is_clinic        		= models.BooleanField(default=False)
     hide_email				= models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'

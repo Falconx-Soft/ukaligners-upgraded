@@ -4,8 +4,11 @@ from Users.models import Account as Users
 
 from .models import fee
 
-from DentistRoll.models import Dentist, Clinic
-from DentistRoll.forms import DentistForm, ClinicForm
+from DentistRoll.models import Dentist
+from DentistRoll.forms import DentistForm
+
+from ClinicRoll.models import Clinic
+from ClinicRoll.forms import ClinicForm
 
 from SaloonRoll.models import Saloon_owner, Saloon
 from SaloonRoll.forms import Saloon_ownerForm, SaloonForm
@@ -201,24 +204,37 @@ def clinic_list(request):
 
 @login_required(login_url='login')
 def create_clinic(request):
-    if request.user.is_admin == True or request.user.is_dentist == True:
-        form = ClinicForm
-        if request.method == "POST":
-            form = ClinicForm(request.POST)
+    if request.user.is_admin:
+        form = CutomUserCreationForm
+        if request.method == 'POST':
+            form = CutomUserCreationForm(request.POST)
             if form.is_valid():
-                new_clinic = form.save(commit=False)
-                new_clinic.save()
-                if request.user.is_admin:
-                    return redirect('AdminRoll:clinic_list')
-                else:
-                    return redirect('DentistRoll:dentist_dashboard')
+                user = form.save(commit=False)
+                user.username = user.username.lower()
+                user.is_clinic = True
+                user.save()
+                building_number = request.POST.get('building_number')
+                street = request.POST.get('street')
+                town = request.POST.get('town')
+                postcode = request.POST.get('postcode')
+                country = request.POST.get('country')
+                number = request.POST.get('number')
+                clinic_obj = Clinic.objects.create(
+                                                user=user, 
+                                                building_number=building_number, 
+                                                street=street,
+                                                town=town,
+                                                postcode=postcode,
+                                                country=country,
+                                                number=number,
+                                                )
+                clinic_obj.save()
         context = {
             'form':form,
-            'type':'Clinic',
+            'page_type':'create'
         }
         return render(request,'adminRoll/create_clinic.html',context)
-    else:
-        return redirect('login')
+    return redirect('login')
 
 @login_required(login_url='login')
 def edit_clinic(request,id):
@@ -234,6 +250,7 @@ def edit_clinic(request,id):
             'form':form,
             'clinic_obj':clinic_obj,
             'type':'Clinic',
+            'page_type':'edit'
         }
         return render(request,'adminRoll/create_clinic.html',context)
     else:
@@ -243,7 +260,8 @@ def edit_clinic(request,id):
 def delete_clinic(request,id):
     if request.user.is_admin == True:
         clinic_obj = Clinic.objects.get(id=id)
-        clinic_obj.delete()
+        clinic_user = clinic_obj.user
+        clinic_user.delete()
         return redirect('AdminRoll:clinic_list')
     else:
         return redirect('login')    

@@ -28,13 +28,13 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Building Number</th>
                                             <th scope="col">Street</th>
                                             <th scope="col">Town</th>
                                             <th scope="col">Postcode</th>
                                             <th scope="col">Country</th>
                                             <th scope="col">Number</th>
-                                            <th scope="col">Email</th>
                                             <th scope="col">Edit</th>
                                             <!-- <th scope="col">Delete</th> -->
                                         </tr>
@@ -42,14 +42,14 @@
                                     <tbody>
                                         {% for obj in clinic_list_obj %}
                                         <tr>
-                                            <td>{{ obj.name }}</td>
+                                            <td>{{ obj.user.username }}</td>
+                                            <td>{{ obj.user.email }}</td>
                                             <td>{{ obj.building_number }}</td>
                                             <td>{{ obj.street }}</td>
                                             <td>{{ obj.town }}</td>
                                             <td>{{ obj.postcode }}</td>
                                             <td>{{ obj.country }}</td>
                                             <td>{{ obj.number }}</td>
-                                            <td>{{ obj.email }}</td>
                                             <td><a href="{% url 'AdminRoll:edit_clinic' obj.id %}">Edit</a></td>
                                             <!-- <td><a href="{% url 'AdminRoll:delete_clinic' obj.id %}">Delete</a></td> -->
                                         </tr>

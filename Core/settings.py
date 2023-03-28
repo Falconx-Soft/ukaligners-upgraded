@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'PlannerRoll',
     'TechnicianRoll',
     'Case',
+    'ClinicRoll',
 ]
 
 MIDDLEWARE = [

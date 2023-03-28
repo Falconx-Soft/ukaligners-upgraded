@@ -10,9 +10,3 @@ class DentistForm(ModelForm):
     class Meta:
         model = Dentist
         exclude = ('user','surname')
-
-class ClinicForm(ModelForm):
-
-    class Meta:
-        model = Clinic
-        fields = '__all__'

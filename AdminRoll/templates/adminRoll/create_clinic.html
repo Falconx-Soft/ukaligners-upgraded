@@ -20,17 +20,19 @@
                     </div>
                     <div class="white_card_body">
                         <div class="card-body">
+
                             <form method="post" action="">{% csrf_token %}
                                 <div class="row">
+                                    {% if page_type == 'create' %}
                                     <div class="row" id="more_flights">
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
-                                                <label>{{type}} Name</label>
-                                                <input type="text" class="form-control m-2 form-fields" placeholder="Name"
-                                                    name="name" value="{{clinic_obj.name}}" required>
-                                                {% if form.errors.name %}
-                                                    {{form.errors.name}}
+                                                <label>Name</label>
+                                                <input type="text" class="form-control m-2 form-fields"
+                                                    placeholder="Name" name="username" required>
+                                                {% if form.errors.username %}
+                                                {{form.errors.username}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -38,10 +40,10 @@
                                             <div id="inputContainer">
                                                 <br>
                                                 <label>Email</label>
-                                                <input type="email" class="form-control m-2" placeholder="Email"
-                                                    name="email" value="{{clinic_obj.email}}" required>
+                                                <input type="email" class="form-control m-2" placeholder="email"
+                                                    name="email" required>
                                                 {% if form.errors.email %}
-                                                    {{form.errors.email}}
+                                                {{form.errors.email}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -50,11 +52,37 @@
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
+                                                <label>Password</label>
+                                                <input type="password" class="form-control m-2 form-fields"
+                                                    placeholder="Password" name="password1" required>
+                                                {% if form.errors.password1 %}
+                                                {{form.errors.password1}}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Confirm Password</label>
+                                                <input type="password" class="form-control m-2"
+                                                    placeholder="Confirm Password" name="password2" required>
+                                                {% if form.errors.password2 %}
+                                                {{form.errors.password2}}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
                                                 <label>Building Number</label>
-                                                <input type="text" class="form-control m-2 form-fields" placeholder="Building Number"
-                                                    name="building_number" value="{{clinic_obj.building_number}}" required>
+                                                <input type="text" class="form-control m-2 form-fields"
+                                                    placeholder="Building Number" name="building_number"
+                                                    value="{{clinic_obj.building_number}}" required>
                                                 {% if form.errors.building_number %}
-                                                    {{form.errors.building_number}}
+                                                {{form.errors.building_number}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -65,7 +93,7 @@
                                                 <input type="text" class="form-control m-2" placeholder="Street"
                                                     name="street" value="{{clinic_obj.street}}" required>
                                                 {% if form.errors.street %}
-                                                    {{form.errors.street}}
+                                                {{form.errors.street}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -75,10 +103,10 @@
                                             <div id="inputContainer">
                                                 <br>
                                                 <label>Town</label>
-                                                <input type="text" class="form-control m-2 form-fields" placeholder="Town"
-                                                    name="town" value="{{clinic_obj.town}}" required>
+                                                <input type="text" class="form-control m-2 form-fields"
+                                                    placeholder="Town" name="town" value="{{clinic_obj.town}}" required>
                                                 {% if form.errors.town %}
-                                                    {{form.errors.town}}
+                                                {{form.errors.town}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -89,7 +117,7 @@
                                                 <input type="text" class="form-control m-2" placeholder="Postcode"
                                                     name="postcode" value="{{clinic_obj.postcode}}" required>
                                                 {% if form.errors.postcode %}
-                                                    {{form.errors.postcode}}
+                                                {{form.errors.postcode}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -99,10 +127,11 @@
                                             <div id="inputContainer">
                                                 <br>
                                                 <label>Country</label>
-                                                <input type="text" class="form-control m-2 form-fields" placeholder="Country"
-                                                    name="country" value="{{clinic_obj.country}}" required>
+                                                <input type="text" class="form-control m-2 form-fields"
+                                                    placeholder="Country" name="country" value="{{clinic_obj.country}}"
+                                                    required>
                                                 {% if form.errors.country %}
-                                                    {{form.errors.country}}
+                                                {{form.errors.country}}
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -113,13 +142,18 @@
                                                 <input type="text" class="form-control m-2" placeholder="Number"
                                                     name="number" value="{{clinic_obj.number}}" required>
                                                 {% if form.errors.number %}
-                                                    {{form.errors.number}}
+                                                {{form.errors.number}}
                                                 {% endif %}
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Submit
-                                    </button>
+                                    {% if page_type == 'create' %}
+                                        <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Create
+                                        </button>
+                                    {% else %}
+                                        <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Update
+                                        </button>
+                                    {% endif %}
                                 </div>
                             </form>
                         </div>
