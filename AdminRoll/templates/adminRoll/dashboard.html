@@ -18,75 +18,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="white_card">
-                        <div class="QA_section plr_30">
-                            <div class="QA_table mb_30">
-                                <table class="table lms_table_active ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">New Patient</th>
-                                            <th scope="col">Suggested</th>
-                                            <th scope="col">Accepted</th>
-                                            <th scope="col">In Treatment</th>
-                                            <th scope="col">On Hold</th>
-                                            <th scope="col">Review</th>
-                                            <th scope="col">Declined</th>
-                                            <th scope="col">TC</th>
-                                            <th scope="col">Account</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for case in case_list %}
-                                        <tr>
-                                            <td>
-                                                {% if case.status == "new" %}
-                                                    <a href="{% url 'DentistRoll:edit_case' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "waiting acceptance" %}
-                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "accepted" %}
-                                                <a href="{% url 'AdminRoll:case_accepted' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "treatment" %}
-                                                <a href="{% url 'AdminRoll:case_treatment' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "on-hold" %}
-                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "review" %}
-                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "declined" %}
-                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>
-                                                {% if case.status == "tc" %}
-                                                <a href="{% url 'AdminRoll:case_treatment' case.id %}">{{ case.name }}-{{ case.surname }}</a>
-                                                {% endif %}
-                                            </td>
-                                            <td>{{ case.account_amount }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="white_card ">
                         <div class="QA_section plr_30">
                             <div class="QA_table mb_30">
@@ -96,77 +27,86 @@
                                         <tr>
                                             <th scope="col">Date</th>
                                             <th scope="col">Patient Name</th>
-                                            <th scope="col">Patient ID</th>
                                             <th scope="col">Dentist</th>
-                                            <th scope="col">Clinic</th>
                                             <th scope="col">Treatment</th>
-                                            <th scope="col">Section</th>
-                                            <th scope="col">Manager</th>
-                                            <th scope="col">Planner</th>
-                                            <th scope="col">Technician</th>
-                                            <th scope="col">Alligners</th>
-                                            <th scope="col">Plan</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for case in case_list %}
-                                        <tr>
-                                            <td>{{ case.created_at }}</td>
-                                            <td>{{ case.name }}-{{ case.surname }}</td>
-                                            <td>{{ case.id }}</td>
-                                            <td>{{ case.dentist }}-{{ case.dentist.surname }}</td>
-                                            <td>{{ case.clinic }}</td>
-                                            <td>{{ case.treatment_required }}</td>
-                                            <td>{{ case.section }}</td>
-                                            {% if case.saloon_owner %}
-                                                <td>{{ case.saloon_owner.manager }}</td>
-                                            {% elif case.dentist %}
-                                                <td>{{ case.dentist.manager }}</td>
-                                            {% endif %}
-                                            <td>{{ case.planner }}</td>
-                                            <td>{{ case.technician }}</td>
-                                            <td>{{ case.alligners }}</td>
-                                            <td>{{ case.plan }}</td>
-                                            
-                                        </tr>
-                                        {% endfor %}
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="white_card ">
-                        <div class="QA_section plr_30">
-                            <div class="QA_table mb_30">
-
-                                <table class="table lms_table_active ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Duration</th>
-                                            <th scope="col">Monitoring</th>
-                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Aligners</th>
+                                            <th scope="col">User</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Progress</th>
-                                            <th scope="col">Outstanding</th>
+                                            <th scope="col">Invoice</th>
                                             <th scope="col">Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for case in case_list %}
                                         <tr>
-                                            <td></td>
-                                            <td>{{ case.duration }}</td>
-                                            <td>{{ item.patient.name }}</td>
+                                            <td>{{ case.created_at }}</td>
+                                            <td>
+                                                <div class="custom_tooltip">{{ case.name }}-{{ case.surname }}
+                                                    <span class="custom_tooltiptext">
+                                                        <p>Name: {{ case.name }}-{{ case.surname }}</p>
+                                                        <p>ID: {{ case.id }}</p>
+                                                    </span>
+                                                  </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom_tooltip">{{ case.dentist }}-{{ case.dentist.surname }}
+                                                    <span class="custom_tooltiptext">
+                                                        <p>Name: {{ case.dentist }}-{{ case.dentist.surname }}</p>
+                                                        <p>Clinic: {{ case.clinic }}</p>
+                                                    </span>
+                                                  </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom_tooltip">{{ case.treatment_required }}
+                                                    <span class="custom_tooltiptext">
+                                                        <p>Treatment: {{ case.treatment_required }}</p>
+                                                        <p>Section: {{ case.section }}</p>
+                                                    </span>
+                                                  </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom_tooltip">Aligners
+                                                    <span class="custom_tooltiptext">
+                                                        <p>Alligners-Upper: {{ case.aligners_upper }}</p>
+                                                        <p>Alligners-Lower: {{ case.aligners_lower }}</p>
+                                                        <p>Duration: {{ case.duration }}</p>
+                                                    </span>
+                                                  </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom_tooltip">Users
+                                                    <span class="custom_tooltiptext">
+                                                        <p>Manager: {{ case.dentist.manager }}</p>
+                                                        <p>Planner: {{ case.planner.user.username }}</p>
+                                                        <p>Technician: {{ case.technician.user.username }}</p>
+                                                    </span>
+                                                  </div>
+                                            </td>
                                             <td>{{ case.status }}</td>
                                             <td>{{ case.progress }}</td>
-                                            <td>{{ item.clinic.name }}</td>
-                                            <td></td>
-                                            <td>{{ item.patient.section }}</td>
+                                            <td>Invoice</td>
+                                            <td>
+                                                {% if case.status == "new" %}
+                                                <a href="{% url 'DentistRoll:edit_case' case.id %}">View</a>
+                                                {% elif case.status == "waiting acceptance" %}
+                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">View</a>
+                                                {% elif case.status == "accepted" %}
+                                                <a href="{% url 'AdminRoll:case_accepted' case.id %}">View</a>
+                                                {% elif case.status == "treatment" %}
+                                                <a href="{% url 'AdminRoll:case_treatment' case.id %}">View</a>
+                                                {% elif case.status == "on-hold" %}
+                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">View</a>
+                                                {% elif case.status == "review" %}
+                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">View</a>
+                                                {% elif case.status == "declined" %}
+                                                <a href="{% url 'DentistRoll:waiting_case_details' case.id %}">View</a>
+                                                {% elif case.status == "tc" %}
+                                                <a href="{% url 'AdminRoll:case_treatment' case.id %}">View</a>
+                                                {% endif %}
+                                            </td>
                                         </tr>
                                         {% endfor %}
-
                                     </tbody>
                                 </table>
                             </div>

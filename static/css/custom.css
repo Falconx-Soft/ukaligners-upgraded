@@ -36,5 +36,36 @@
     height: 100px;
 }
 
-/********** Ratio card buttons ************/
+/********** tool tip ************/
+
+.custom_tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .custom_tooltip .custom_tooltiptext {
+    visibility: hidden;
+    width: 130px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    text-align: left;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: -8px;
+  }
+
+  .custom_tooltiptext > p{
+    color: #fff;
+  }
+  
+  .custom_tooltip:hover .custom_tooltiptext {
+    visibility: visible;
+  }
 
