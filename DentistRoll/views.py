@@ -162,6 +162,9 @@ def waiting_case_details(request, id):
             fee_aligner = case_fee_obj.fee_aligner
             fee_monitring = case_fee_obj.fee_monitring
             fee_comprehensive = case_fee_obj.fee_comprehensive
+            fee_replacement = case_fee_obj.fee_replacement
+            fee_mouthguard = case_fee_obj.fee_mouthguard
+            fee_smile_design = case_fee_obj.fee_smile_design
         else:
             fee_plan = 0
             fee_retainer = 0
@@ -173,9 +176,16 @@ def waiting_case_details(request, id):
         
         total_amount_essential = (total_plan*fee_plan) + (total_aligners*fee_aligner) + (total_retainer * fee_retainer)   
 
-        total_amount_advance = (total_plan*fee_plan) + (total_aligners*fee_aligner) + (total_retainer * fee_retainer) + (case_obj.duration * fee_monitring)  
+        total_amount_advance = (case_obj.duration * fee_monitring)  
 
-        total_amount_comprehensive = (total_plan*fee_plan) + (total_aligners*fee_aligner) + (total_retainer * fee_retainer) + (case_obj.duration * fee_monitring) + (total_aligners*fee_comprehensive)
+        total_amount_comprehensive = (total_aligners*fee_comprehensive)
+
+        if case_obj.optional_treatment == "replacement":
+            total_amount_essential += fee_replacement
+        if case_obj.optional_treatment == "mouthguard":
+            total_amount_essential += fee_mouthguard
+        if case_obj.optional_treatment == "smile design":
+            total_amount_essential += fee_smile_design
 
         if request.method == "POST":
             treatment_type = request.POST.get("treatment_type")
