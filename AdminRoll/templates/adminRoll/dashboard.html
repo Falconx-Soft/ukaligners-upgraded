@@ -39,10 +39,18 @@
                                     </thead>
                                     <tbody>
                                         {% for case in case_list %}
+                                        {% if case.status == 'new' %}
+                                        <tr class="new-case-tr">
+                                        {% else %}
                                         <tr>
+                                        {% endif %}
                                             <td>{{ case.created_at }}</td>
                                             <td>
-                                                <div class="custom_tooltip">{{ case.name }}-{{ case.surname }}
+                                                <div class="custom_tooltip">
+                                                    {{ case.name }}-{{ case.surname }}
+                                                    {% if case.refinement > 0 %}
+                                                        - {{case.refinement}}
+                                                    {% endif %}
                                                     <span class="custom_tooltiptext">
                                                         <p>Name: {{ case.name }}-{{ case.surname }}</p>
                                                         <p>ID: {{ case.id }}</p>

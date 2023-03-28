@@ -23,7 +23,7 @@ class Saloon_owner(models.Model):
     user                    = models.OneToOneField(Users, on_delete=models.CASCADE)
     surname                 = models.CharField(max_length=150,null=True,blank=True)
     number                  = models.CharField(max_length=150,null=True,blank=True)
-    saloon                  = models.ManyToManyField(Saloon,null=True,blank=True)
+    saloon                  = models.ManyToManyField(Saloon)
     manager                 = models.ForeignKey(Manager, on_delete=models.DO_NOTHING, null=True, blank=True)
     code                    = models.CharField(max_length=150,null=True,blank=True)
 

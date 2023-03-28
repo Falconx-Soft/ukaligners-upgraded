@@ -14,7 +14,7 @@ from django.core.mail import send_mail
 @login_required(login_url='login')
 def dentist_dashboard(request):
     dentist_obj = Dentist.objects.get(user=request.user)
-    case_list = Case.objects.filter(dentist=dentist_obj)
+    case_list = Case.objects.filter(dentist=dentist_obj).order_by('-id')
     print(case_list)
     context = {
         'case_list':case_list
@@ -125,6 +125,7 @@ def edit_case(request, id):
                     return redirect('AdminRoll:admin_dashboard')
             else:
                 print(form.errors.as_data(),"<-----------")
+                context['error_msg'] = 'Data is not valid.'
 
         context['case_obj'] = case_obj
         context['form'] = form

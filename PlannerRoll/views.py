@@ -11,9 +11,7 @@ from Users.models import Account as User
 def planner_dashboard(request):
     if request.user.is_planner:
         planner_obj = Planner.objects.get(user=request.user)
-        print(planner_obj)
-        case_list = Case.objects.filter(planner=planner_obj)
-        print(case_list)
+        case_list = Case.objects.filter(planner=planner_obj).order_by('-id')
         context = {
             'case_list':case_list
         }

@@ -33,7 +33,7 @@ from itertools import chain
 @login_required(login_url='login')
 def admin_dashboard(request):
     if request.user.is_admin:
-        case_list = Case.objects.all()
+        case_list = Case.objects.all().order_by('-id')
         context = {
             'case_list':case_list
         }
@@ -572,8 +572,10 @@ def make_refinment(request,id):
                     clinic =  case_obj.clinic,
                     dentist = case_obj.dentist,
                     name = case_obj.name,
+                    surname = case_obj.surname,
                     treatment_required = case_obj.treatment_required,
                     section = case_obj.section,
+                    refinement = case_obj.refinement + 1,
                     )
         new_case.save()
     else:
@@ -581,8 +583,10 @@ def make_refinment(request,id):
                     saloon =  case_obj.saloon,
                     saloon_owner = case_obj.saloon_owner,
                     name = case_obj.name,
+                    surname = case_obj.surname,
                     treatment_required = case_obj.treatment_required,
                     section = case_obj.section,
+                    refinement = case_obj.refinement + 1,
                     )
         new_case.save()
     if request.user.is_admin:

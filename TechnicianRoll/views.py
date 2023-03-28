@@ -8,7 +8,7 @@ from Case.models import Case, Case_additional_images, Case_additional_videos
 def technician_dashboard(request):
     if request.user.is_technician:
         technician_obj = Technician.objects.get(user=request.user)
-        case_list = Case.objects.filter(technician=technician_obj)
+        case_list = Case.objects.filter(technician=technician_obj).order_by('-id')
         context = {
             'case_list':case_list
         }

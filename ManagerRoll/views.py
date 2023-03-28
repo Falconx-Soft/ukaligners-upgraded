@@ -6,7 +6,7 @@ from Case.models import Case
 def manager_dashboard(request):
     if request.user.is_manager:
         manager_obj = Manager.objects.get(user=request.user)
-        case_list = Case.objects.filter(dentist__manager=manager_obj)
+        case_list = Case.objects.filter(dentist__manager=manager_obj).order_by('-id')
         print(case_list)
         context = {
             'case_list':case_list

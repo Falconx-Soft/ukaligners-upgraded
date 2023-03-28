@@ -74,6 +74,8 @@ class Case(models.Model):
     manager_paid                    = models.BooleanField(default=False)
     planner_paid                    = models.BooleanField(default=False)
     technician_paid                 = models.BooleanField(default=False)
+
+    refinement                      = models.IntegerField(default=0)
     
     class Meta:
         verbose_name_plural = "Cases"

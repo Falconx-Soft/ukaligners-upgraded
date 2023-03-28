@@ -17,6 +17,9 @@
                                 <h3 class="m-0">Create Case</h3>
                             </div>
                         </div>
+                        {% if error_msg %}
+                            <p class="error-msg">{{ error_msg }}</p>
+                        {% endif %}
                     </div>
                     <div class="white_card_body">
                         <div class="card-body">

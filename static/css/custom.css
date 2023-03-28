@@ -69,3 +69,18 @@
     visibility: visible;
   }
 
+
+/********** new case ************/
+
+.new-case-tr{
+  background-color: antiquewhite !important;
+}
+
+
+/********** error msg ************/
+
+.error-msg{
+  text-align: center;
+  color: red;
+}
+

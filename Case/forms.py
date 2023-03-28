@@ -5,4 +5,4 @@ class CaseForm(ModelForm):
 
     class Meta:
         model = Case
-        fields = '__all__'
+        exclude = ('refinement',)
