@@ -12,8 +12,8 @@
             <div class="col-lg-12">
                 <div class="white_box mb_30">
                     <div class="row justify-content-center">
+                        <img src="{% static 'img/mini-logo.png' %}" class="mini-logo">
                         <div class="col-lg-6">
-
                             <div class="modal-content cs_modal">
                                 <div class="modal-header justify-content-center theme_bg_1">
                                     <h5 class="modal-title text_white">Log in</h5>
@@ -42,7 +42,7 @@
 
                                         <button type="submit" class="btn_1 full_width text-center">Log in</button>
                                         <p>Need an account? <a data-bs-toggle="modal" data-bs-target="#sing_up"
-                                                data-bs-dismiss="modal" href="{% url 'sign_up' %}"> Sign
+                                                data-bs-dismiss="modal" href="https://www.ukaligners.com/reg"> Sign
                                                 Up</a></p>
                                         <div class="text-center">
                                             <a href="{% url 'password_reset' %}" data-bs-toggle="modal" data-bs-target="#forgot_password"
@@ -53,7 +53,11 @@
                                 </div>
                             </div>
                         </div>
+                        <img src="{% static 'img/mini-logo.png' %}" class="mini-logo">
                     </div>
+                </div>
+                <div class="main-logo-div">
+                    <img src="{% static 'img/logo.png' %}" class="main-logo">
                 </div>
             </div>
         </div>

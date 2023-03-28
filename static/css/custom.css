@@ -84,3 +84,20 @@
   color: red;
 }
 
+/********** Logo ************/
+
+.mini-logo{
+  height: 300px;
+  width: 300px;
+}
+
+.main-logo-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-logo{
+  width: 420px;
+}
+
