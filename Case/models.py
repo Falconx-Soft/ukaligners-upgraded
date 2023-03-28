@@ -25,6 +25,12 @@ class Case(models.Model):
         ("retainer","retainer")
     )
 
+    OPTIONAL_TREATMENT = (
+        ("replacement","replacement"),
+        ("mouthguard","mouthguard"),
+        ("smile design","smile design")
+    )
+
     SECTION_CHOICES = (
         ("both arches","both arches"),
         ("upper only","upper only"),
@@ -47,6 +53,7 @@ class Case(models.Model):
     gender                          = models.CharField(max_length=50,choices=GENDER_CHOICES)
     age                             = models.IntegerField(null=True, blank=True)
     treatment_required              = models.CharField(max_length=100,choices=TREATMENT_REQUIRED_CHOICES)
+    optional_treatment              = models.CharField(max_length=100,choices=OPTIONAL_TREATMENT, null=True, blank=True)
     orthodontic_treatment_past      = models.CharField(max_length=10,null=True, blank=True, choices=ORTHODONTIC_CHOICES)
     section                         = models.CharField(max_length=250,null=True, blank=True, choices=SECTION_CHOICES)
     treatment_type                  = models.CharField(max_length=250,null=True, blank=True, choices=TREATMENT_CHOICES)

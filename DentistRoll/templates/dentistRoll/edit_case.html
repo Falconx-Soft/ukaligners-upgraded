@@ -124,15 +124,15 @@
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
-                                                <label>Orthodontic treatment in past</label>
-                                                {{form.orthodontic_treatment_past}}
+                                                <label>Treatment*</label>
+                                                {{form.treatment_required}}
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
-                                                <label>Treatment*</label>
-                                                {{form.treatment_required}}
+                                                <label>Optional Treatment</label>
+                                                {{form.optional_treatment}}
                                             </div>
                                         </div>
                                     </div>
@@ -181,6 +181,15 @@
                                         </div>
                                     </div>
                                     <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Orthodontic treatment in past</label>
+                                                {{form.orthodontic_treatment_past}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
                                         <div class="col-12">
                                             <div id="inputContainer">
                                                 <br>
@@ -224,7 +233,7 @@
                                         </div>
                                     </div>
                                     {% endif %}
-                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Create
+                                    <button class="btn btn-primary mt-3 ms-2" type="submit" value="Create">Update
                                     </button>
                                 </div>
                             </form>

@@ -8,6 +8,9 @@ class fee(models.Model):
     fee_aligner                    = models.IntegerField(default=0.0)
     fee_monitring                  = models.IntegerField(default=0.0)
     fee_comprehensive              = models.IntegerField(default=0.0)
+    fee_replacement                = models.IntegerField(default=0.0)
+    fee_mouthguard                 = models.IntegerField(default=0.0)
+    fee_smile_design               = models.IntegerField(default=0.0)
 
     class Meta:
         verbose_name_plural = "Fee"

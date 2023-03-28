@@ -736,6 +736,9 @@ def case_fee(request):
                 fee_obj.fee_aligner = request.POST.get('fee_aligner')
                 fee_obj.fee_monitring = request.POST.get('fee_monitring')
                 fee_obj.fee_comprehensive = request.POST.get('fee_comprehensive')
+                fee_obj.fee_replacement = request.POST.get('fee_replacement')
+                fee_obj.fee_mouthguard = request.POST.get('fee_mouthguard')
+                fee_obj.fee_smile_design = request.POST.get('fee_smile_design')
                 fee_obj.save()
             else:
                 temp = fee.objects.create(
@@ -743,7 +746,10 @@ def case_fee(request):
                     fee_retainer=request.POST.get('fee_retainer'),
                     fee_aligner=request.POST.get('fee_aligner'),
                     fee_monitring=request.POST.get('fee_monitring'),
-                    fee_comprehensive=request.POST.get('fee_comprehensive')
+                    fee_comprehensive=request.POST.get('fee_comprehensive'),
+                    fee_replacement = request.POST.get('fee_replacement'),
+                    fee_mouthguard = request.POST.get('fee_mouthguard'),
+                    fee_smile_design = request.POST.get('fee_smile_design')
                 )
                 temp.save()
             return redirect('AdminRoll:admin_dashboard')
