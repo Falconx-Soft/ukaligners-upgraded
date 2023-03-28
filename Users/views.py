@@ -34,6 +34,8 @@ def user_login(request):
                     return redirect('PlannerRoll:planner_dashboard')
                 elif user.is_technician:
                     return redirect('TechnicianRoll:technician_dashboard')
+                elif user.is_clinic:
+                    return redirect('ClinicRoll:clinic_dashboard')
                 else:
                     return HttpResponse('Roll does not recognized')
             else:

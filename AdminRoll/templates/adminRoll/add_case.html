@@ -81,7 +81,7 @@
                                                 <select name="clinic_id" required>
                                                     <option value="">-------</option>
                                                     {% for clinic in clinic_list %}
-                                                        <option value="{{clinic.id}}">{{clinic.name}}</option>
+                                                        <option value="{{clinic.id}}">{{clinic.user.username}}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>

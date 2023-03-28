@@ -33,7 +33,6 @@
                                             <th scope="col">User</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Progress</th>
-                                            <th scope="col">Invoice</th>
                                             <th scope="col">Edit</th>
                                         </tr>
                                     </thead>
@@ -93,7 +92,6 @@
                                             </td>
                                             <td>{{ case.status }}</td>
                                             <td>{{ case.progress }}</td>
-                                            <td>Invoice</td>
                                             <td>
                                                 {% if case.status == "new" %}
                                                 <a href="{% url 'DentistRoll:edit_case' case.id %}">View</a>

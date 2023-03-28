@@ -30,10 +30,8 @@
                                             <th scope="col">Dentist</th>
                                             <th scope="col">Treatment</th>
                                             <th scope="col">Aligners</th>
-                                            <th scope="col">User</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Progress</th>
-                                            <th scope="col">Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,37 +79,10 @@
                                                     </span>
                                                   </div>
                                             </td>
-                                            <td>
-                                                <div class="custom_tooltip">Users
-                                                    <span class="custom_tooltiptext">
-                                                        <p>Manager: {{ case.dentist.manager }}</p>
-                                                    </span>
-                                                  </div>
-                                            </td>
                                             <td>{{ case.status }}</td>
                                             <td>{{ case.progress }}</td>
-                                            <td>
-                                            {% if case.status == "new" %}
-                                                <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "waiting acceptance" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "accepted" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "treatment" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "on-hold" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "review" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "declined" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% elif case.status == "tc" %}
-                                            <a href="{% url 'AdminRoll:view_details' case.id %}">View</a>
-                                            {% endif %}
-                                            </td>
                                         </tr>
                                         {% endfor %}
-
                                     </tbody>
                                 </table>
                             </div>
