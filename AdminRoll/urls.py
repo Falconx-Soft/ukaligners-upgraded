@@ -54,4 +54,8 @@ urlpatterns = [
 
     path('case-fee/', views.case_fee, name="case_fee"),
 
+    path('user-expense/', views.user_expense, name="user_expense"),
+    path('get-user-expense/<str:user_type>/<int:id>/', views.get_user_expense, name="get_user_expense"),
+    path('get-paid/<str:user_type>/<int:user_id>/<int:case_id>/', views.get_paid, name="get_paid"),
+
 ]

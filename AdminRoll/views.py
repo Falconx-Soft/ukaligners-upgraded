@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from Users.models import Account as Users
+from django.db.models import Q
 
 from .models import fee
 
@@ -716,8 +717,10 @@ def expense(request,id):
             'percentage':round(percentage, 2),
             'technician_fee':technician_fee,
             'total_aligners':total_aligners,
+            'technician_pay': technician_fee*total_aligners,
             'total_plan':total_plan,
             'planner_fee':planner_fee,
+            'planner_pay': total_plan*planner_fee,
             'total_expense':round(total_expense, 2),
             'cases_obj':cases_obj
 
@@ -772,5 +775,69 @@ def case_fee(request):
                 temp.save()
             return redirect('AdminRoll:admin_dashboard')
         return render(request,'adminRoll/case_fee.html',context)
+    else:
+        return redirect('login')
+
+@login_required(login_url='login') 
+def user_expense(request):
+    if request.user.is_admin:
+        total_managers = Manager.objects.all()
+        total_planner = Planner.objects.all()
+        total_technician = Technician.objects.all()
+        context = {
+            'total_managers':total_managers,
+            'total_planner':total_planner,
+            'total_technician':total_technician
+        }
+        return render(request,'adminRoll/user_expense.html',context)
+    else:
+        return redirect('login')
+    
+@login_required(login_url='login') 
+def get_user_expense(request,user_type,id):
+    if request.user.is_admin:
+        if user_type == "manager":
+            manager_obj = Manager.objects.get(id=id)
+            total_cases = Case.objects.filter(Q(dentist__manager = manager_obj) & Q(status = 'accepted') | Q(status = 'tc') | Q(status = 'treatment'))
+            user_name = manager_obj.user.username
+            user_id = manager_obj.id
+        elif user_type == "planner":
+            planner_obj = Planner.objects.get(id=id)
+            total_cases = Case.objects.filter(Q(planner = planner_obj) & Q(status = 'accepted') | Q(status = 'tc') | Q(status = 'treatment'))
+            user_name = planner_obj.user.username
+            user_id = planner_obj.id
+        elif user_type == "technician":
+            technician_obj = Technician.objects.get(id=id)
+            total_cases = Case.objects.filter(technician = technician_obj)
+            user_name = technician_obj.user.username
+            user_id = technician_obj.id
+
+
+        context = {
+            'total_cases':total_cases,
+            'user_name':user_name,
+            'user_type':user_type,
+            'user_id':user_id
+        }
+        return render(request,'adminRoll/user_expense_list.html',context)
+    else:
+        return redirect('login')
+    
+@login_required(login_url='login') 
+def get_paid(request,user_type,user_id,case_id):
+    if request.user.is_admin:
+        if user_type == "manager":
+            total_cases = Case.objects.get(id=case_id)
+            total_cases.manager_paid = True
+            total_cases.save()
+        elif user_type == "planner":
+            total_cases = Case.objects.get(id=case_id)
+            total_cases.planner_paid = True
+            total_cases.save()
+        elif user_type == "technician":
+            total_cases = Case.objects.get(id=case_id)
+            total_cases.technician_paid = True
+            total_cases.save()
+        return redirect('AdminRoll:get_user_expense',user_type=user_type,id=user_id)
     else:
         return redirect('login')

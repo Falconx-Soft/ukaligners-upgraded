@@ -77,7 +77,7 @@
                                                 <select name="clinic_id" required>
                                                     <option value="">-------</option>
                                                     {% for clinic in dentist_obj.clinic.all %}
-                                                        <option value="{{clinic.id}}">{{clinic.name}}</option>
+                                                        <option value="{{clinic.id}}">{{clinic.user.username}}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
@@ -88,10 +88,12 @@
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
-                                                <label>Orthodontic treatment in past</label>
-                                                <select name="orthodontic_treatment_past">
-                                                    <option value="yes">yes</option>
-                                                    <option value="no">no</option>
+                                                <label>Optional treatment</label>
+                                                <select name="optional_treatment">
+                                                    <option value="">-------</option>
+                                                    <option value="replacement">Replacement</option>
+                                                    <option value="mouthguard">Mouthguard</option>
+                                                    <option value="smile design">Smile Design</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -143,6 +145,18 @@
                                                 <br>
                                                 <label>Lower Jaw File</label>
                                                 <input type="file" class="form-control" name="lower_jaw">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="more_flights">
+                                        <div class="col-6">
+                                            <div id="inputContainer">
+                                                <br>
+                                                <label>Orthodontic treatment in past</label>
+                                                <select name="orthodontic_treatment_past">
+                                                    <option value="yes">yes</option>
+                                                    <option value="no">no</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

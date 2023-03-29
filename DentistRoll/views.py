@@ -15,7 +15,6 @@ from django.core.mail import send_mail
 def dentist_dashboard(request):
     dentist_obj = Dentist.objects.get(user=request.user)
     case_list = Case.objects.filter(dentist=dentist_obj).order_by('-id')
-    print(case_list)
     context = {
         'case_list':case_list
     }

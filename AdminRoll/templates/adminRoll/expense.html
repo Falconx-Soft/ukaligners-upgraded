@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>Planner</td>
                                             <td>{{ planner_fee }} * {{total_plan}}</td>
-                                            <td>{% widthratio planner_fee 1 total_plan %}</td>
+                                            <td>{{planner_pay}}</td>
                                             <td>
                                                 <select name="planner_paid">
                                                     <option value='paid' {% if cases_obj.planner_paid %}selected{% endif %}>Paid</option>
@@ -58,7 +58,7 @@
                                         <tr>
                                             <td>Technician</td>
                                             <td>{{technician_fee}} * {{ total_aligners }}</td>
-                                            <td>{% widthratio total_aligners 1 technician_fee %}</td>
+                                            <td>{{technician_pay}}</td>
                                             <td>
                                                 <select name="technician_paid">
                                                     <option value='paid' {% if cases_obj.technician_paid %}selected{% endif %}>Paid</option>
