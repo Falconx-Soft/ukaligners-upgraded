@@ -34,9 +34,9 @@
                                         <div class="col-6">
                                             <div id="inputContainer">
                                                 <br>
-                                                <label>Code</label>
-                                                <input type="text" {% if dentist_obj.code %} value="{{ dentist_obj.code }}" {% endif %} class="form-control m-2" placeholder="Enter code"
-                                                    name="code">
+                                                <label>Discount</label>
+                                                <input type="number" {% if dentist_obj.discount %} value="{{ dentist_obj.discount }}" {% endif %} class="form-control m-2" placeholder="Enter Discount in %"
+                                                    name="discount">
                                             </div>
                                         </div>
                                     </div>

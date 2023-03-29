@@ -8,9 +8,9 @@ class Dentist(models.Model):
     user                    = models.OneToOneField(Users, on_delete=models.CASCADE)
     surname                 = models.CharField(max_length=150,null=True,blank=True)
     number                  = models.CharField(max_length=150,null=True,blank=True)
-    clinic                  = models.ManyToManyField(Clinic,null=True,blank=True)
+    clinic                  = models.ManyToManyField(Clinic)
     manager                 = models.ForeignKey(Manager, on_delete=models.DO_NOTHING, null=True, blank=True)
-    code                    = models.CharField(max_length=150,null=True,blank=True)
+    discount                = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Dentists"

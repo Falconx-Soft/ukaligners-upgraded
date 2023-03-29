@@ -34,7 +34,7 @@
                                             <th scope="col">Contact</th>
                                             <th scope="col">Clinic</th>
                                             <th scope="col">Manager</th>
-                                            <th scope="col">Code</th>
+                                            <th scope="col">Discount</th>
                                             <th scope="col">Case Sent</th>
                                             <th scope="col">Case accepted</th>
                                             <th scope="col">Edit</th>
@@ -58,7 +58,7 @@
                                                     -----
                                                 {% endif %}</td>
                                             <td>{% if obj.manager %} {{ obj.manager }} {% else %} ----- {% endif %}</td>
-                                            <td>{% if obj.code %} {{ obj.code }} {% else %} ----- {% endif %}</td>
+                                            <td>{% if obj.discount %} {{ obj.discount }} {% else %} ----- {% endif %}</td>
                                             <td>{{obj.id|dentist_total_cases}}</td>
                                             <td>{{obj.id|dentist_accepted_cases}}</td>
                                             <td><a href="{% url 'AdminRoll:edit_dentist' obj.id %}">Edit</a></td>

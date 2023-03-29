@@ -54,6 +54,8 @@
 .radio-card-label-description {
     margin-top: 0.5rem;
     color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
 }
 
 .radio-card.selected {

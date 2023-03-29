@@ -178,7 +178,7 @@ def waiting_case_details(request, id):
 
         total_amount_advance = (case_obj.duration * fee_monitring)  
 
-        total_amount_comprehensive = (total_aligners*fee_comprehensive)
+        total_amount_comprehensive = total_amount_advance + (total_aligners*fee_comprehensive)
 
         if case_obj.optional_treatment == "replacement":
             total_amount_essential += fee_replacement
@@ -194,12 +194,19 @@ def waiting_case_details(request, id):
             case_obj.treatment_type = treatment_type
             case_obj.status = status
             if status == "accepted":
+                print("**************")
                 if treatment_type == "essential":
-                    case_obj.totel_fee = total_amount_essential
+                    total_amount = total_amount_essential
+                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    print(total_amount,case_obj.dentist.discount,total_amount - ((total_amount/100)*case_obj.dentist.discount),"-------")
                 elif treatment_type == "advance":
-                    case_obj.totel_fee = total_amount_advance
+                    total_amount = total_amount_essential + total_amount_advance
+                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    print(total_amount,case_obj.dentist.discount,total_amount - ((total_amount/100)*case_obj.dentist.discount),"********")
                 else:
-                    case_obj.totel_fee = total_amount_comprehensive
+                    total_amount = total_amount_essential + total_amount_advance + total_amount_comprehensive
+                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    print(total_amount,case_obj.dentist.discount,total_amount - ((total_amount/100)*case_obj.dentist.discount),"<<<<<<<<<<")
             case_obj.save()
             if request.user.is_admin:
                 return redirect('AdminRoll:admin_dashboard')
