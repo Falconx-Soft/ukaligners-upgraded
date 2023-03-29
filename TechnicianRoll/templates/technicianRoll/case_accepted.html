@@ -9,12 +9,12 @@
 <div class="main_content_iner ">
     <div class="container-fluid p-0">
         <div class="row justify-content-center">
-            <div class="col-lg-12">
+            <div class="col-lg-5">
                 <div class="white_card card_height_100 mb_30">
                     <div class="white_card_header">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0">Case Details</h3>
+                                <h3 class="m-0">Patient Details</h3>
                             </div>
                         </div>
                     </div>
@@ -46,16 +46,39 @@
                                             <td>{{case_obj.age}}</td>
                                         </tr>
                                         <tr>
+                                            <td>Orthodontic treatment past</td>
+                                            <td>{{case_obj.orthodontic_treatment_past}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Treatment</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <td>Treatment required</td>
                                             <td>{{case_obj.treatment_required}}</td>
                                         </tr>
                                         <tr>
                                             <td>Optional treatment</td>
                                             <td>{{case_obj.optional_treatment}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Orthodontic treatment past</td>
-                                            <td>{{case_obj.orthodontic_treatment_past}}</td>
                                         </tr>
                                         <tr>
                                             <td>Section</td>
@@ -111,6 +134,33 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Treatment</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card">
+                        <div class="QA_section plr_30">
+                            <div class="QA_table mb_30">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
                                             <td>Ortho id</td>
                                             <td>{{case_obj.ortho_id}}</td>

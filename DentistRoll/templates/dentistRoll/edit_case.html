@@ -77,9 +77,9 @@
                                                     <option value="">-------</option>
                                                     {% for clinic in dentist_obj.clinic.all %}
                                                         {% if clinic.id == case_obj.clinic.id %}
-                                                            <option value="{{clinic.id}}" selected>{{clinic.name}}</option>
+                                                            <option value="{{clinic.id}}" selected>{{clinic.user.username}}</option>
                                                         {% else %}
-                                                            <option value="{{clinic.id}}">{{clinic.name}}</option>
+                                                            <option value="{{clinic.id}}">{{clinic.user.username}}</option>
                                                         {% endif %}
                                                     {% endfor %}
                                                 </select>
@@ -110,9 +110,9 @@
                                                     <option value="">-------</option>
                                                     {% for clinic in clinic_list %}
                                                         {% if clinic.id == case_obj.clinic.id %}
-                                                            <option value="{{clinic.id}}" selected>{{clinic.name}}</option>
+                                                            <option value="{{clinic.id}}" selected>{{clinic.user.username}}</option>
                                                         {% else %}
-                                                            <option value="{{clinic.id}}">{{clinic.name}}</option>
+                                                            <option value="{{clinic.id}}">{{clinic.user.username}}</option>
                                                         {% endif %}
                                                     {% endfor %}
                                                 </select>
