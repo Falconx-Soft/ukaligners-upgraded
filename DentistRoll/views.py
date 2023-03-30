@@ -196,13 +196,23 @@ def waiting_case_details(request, id):
                 print("**************")
                 if treatment_type == "essential":
                     total_amount = total_amount_essential
-                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    if case_obj.dentist.discount:
+                        case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    else:
+                        case_obj.totel_fee = total_amount
+
                 elif treatment_type == "advance":
                     total_amount = total_amount_essential + total_amount_advance
-                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    if case_obj.dentist.discount:
+                        case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    else:
+                        case_obj.totel_fee = total_amount
                 else:
                     total_amount = total_amount_essential + total_amount_comprehensive
-                    case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    if case_obj.dentist.discount:
+                        case_obj.totel_fee = total_amount - ((total_amount/100)*case_obj.dentist.discount)
+                    else:
+                        case_obj.totel_fee = total_amount
             case_obj.save()
             if request.user.is_admin:
                 return redirect('AdminRoll:admin_dashboard')
